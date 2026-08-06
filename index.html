@@ -93,7 +93,7 @@ nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-conte
 .read-more{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--sage);cursor:pointer;margin:-10px 0 16px;display:inline-block;border-bottom:1px solid var(--sage);width:fit-content;}
 
 .art-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;}
-.art-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;letter-spacing:0.02em;}
+.art-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;letter-spacing:0.02em;margin-bottom:12px;}
 .art-price.sold-price{color:var(--sold-red);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:0.82rem;}
 .art-price small{display:block;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
 .bid-link{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s;cursor:pointer;}
@@ -370,12 +370,12 @@ function singleCardHtml(a){
       </div>
       <div class="art-body">
         <div class="art-title ${a.title ? '' : 'untitled'}">${a.title ? a.title : 'Untitled'}</div>
+        <div class="art-price ${a.sold ? 'sold-price' : ''}"><small>${a.sold ? 'Sold' : 'Reserve Price'}</small>${a.price}</div>
         <a href="meet-the-artists.html#artist-${a.artistSlug}" class="art-artist-link open-artist-modal" data-slug="${a.artistSlug}">by ${a.artist} <span class="arrow">&rarr;</span></a>
         <div class="art-meta">${a.meta}</div>
         <p class="art-desc ${artistBio(a.artistSlug).length > 150 ? 'clamped' : ''}">${artistBio(a.artistSlug)}</p>
         ${artistBio(a.artistSlug).length > 150 ? `<span class="read-more bio-toggle">Read more &rarr;</span>` : ''}
         <div class="art-foot">
-          <div class="art-price ${a.sold ? 'sold-price' : ''}"><small>${a.sold ? 'Sold' : 'Reserve Price'}</small>${a.price}</div>
           <a class="bid-link open-modal" data-row="${a.row}">${a.sold ? 'View' : 'Inquire'}</a>
         </div>
       </div>
@@ -405,12 +405,12 @@ function collectionCardHtml(items){
       <div class="art-body">
         <div class="collection-tag sans">${main.collectionLabel}</div>
         <div class="art-title ${main.title ? '' : 'untitled'}">${main.title ? main.title : 'Untitled'}</div>
+        <div class="art-price ${main.sold ? 'sold-price' : ''}"><small>${main.sold ? 'Sold' : 'Reserve Price'}</small>${main.price}</div>
         <a href="meet-the-artists.html#artist-${main.artistSlug}" class="art-artist-link open-artist-modal" data-slug="${main.artistSlug}">by ${main.artist} <span class="arrow">&rarr;</span></a>
         <div class="art-meta">${main.meta}</div>
         <p class="art-desc ${artistBio(main.artistSlug).length > 150 ? 'clamped' : ''}">${artistBio(main.artistSlug)}</p>
         ${artistBio(main.artistSlug).length > 150 ? `<span class="read-more bio-toggle">Read more &rarr;</span>` : ''}
         <div class="art-foot">
-          <div class="art-price ${main.sold ? 'sold-price' : ''}"><small>${main.sold ? 'Sold' : 'Reserve Price'}</small>${main.price}</div>
           <a class="bid-link open-modal" data-row="${main.row}">${main.sold ? 'View' : 'Inquire'}</a>
         </div>
       </div>
