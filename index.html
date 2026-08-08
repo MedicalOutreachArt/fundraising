@@ -149,35 +149,25 @@ footer{background:var(--ink);color:var(--muted);padding:60px 32px 34px;font-fami
 .neuro-intro .eyebrow{font-family:'Helvetica Neue',Arial,sans-serif;letter-spacing:0.4em;text-transform:uppercase;font-size:0.8rem;color:var(--sage);margin-bottom:22px;}
 .neuro-intro p{max-width:760px;margin:0 auto;line-height:1.9;font-size:1.3rem;color:#3a3f38;white-space:pre-line;}
 .neuro-instruction{text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--sage);margin:0 0 26px;}
-.neuro-artist{max-width:900px;margin:0 auto 90px;text-align:center;padding-bottom:70px;border-bottom:1px solid var(--line);scroll-margin-top:100px;}
-.neuro-artist:last-of-type{border-bottom:none;margin-bottom:0;}
-.neuro-artist .count{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);margin-bottom:30px;display:block;}
-.neuro-artist .bio{color:#4a4f47;line-height:1.9;font-size:1rem;text-align:left;margin:0 auto 40px;max-width:640px;white-space:pre-line;}
-.neuro-works{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
-.neuro-work{width:180px;cursor:pointer;text-align:left;}
-.neuro-work-figure{aspect-ratio:4/5;overflow:hidden;background:#f1ece1;position:relative;border:1px solid var(--line);}
-.neuro-work-figure img{width:100%;height:100%;object-fit:contain;transition:transform .3s;}
-.neuro-work:hover .neuro-work-figure img{transform:scale(1.05);}
-.neuro-work-title{font-size:1rem;margin-top:14px;color:var(--ink);}
-.neuro-work-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.8rem;letter-spacing:0.04em;color:var(--sage);margin-top:4px;}
-.neuro-work-price.sold-price{color:var(--sold-red);}
-.neuro-outro{max-width:600px;margin:0 auto 50px;padding:0 24px;text-align:center;}
-.neuro-outro p{font-style:italic;color:var(--sage);font-size:1.02rem;}
-.neuro-tile-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:1000px;margin:0 auto 24px;padding:0 24px;}
-.neuro-tile{display:flex;align-items:center;gap:14px;border:1px solid var(--line);padding:10px 24px 10px 10px;cursor:pointer;background:var(--paper);transition:border-color .2s,transform .2s,background .2s;}
-.neuro-tile.active{border-color:var(--gold);background:#faf3e4;}
-.neuro-detail-panel{max-width:820px;margin:0 auto;padding:0 24px;scroll-margin-top:90px;}
-.neuro-detail-inner{text-align:center;border-top:1px solid var(--line);padding-top:26px;padding-bottom:10px;}
-.neuro-detail-inner .artist-photo{width:120px;height:120px;margin:0 auto 14px;}
-.neuro-detail-inner h2{font-size:1.3rem;font-weight:400;margin-bottom:4px;}
-.neuro-detail-inner .count{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.64rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--sage);margin-bottom:16px;display:block;}
-.neuro-detail-inner .bio{color:#4a4f47;line-height:1.65;font-size:0.9rem;text-align:left;max-width:600px;margin:0 auto 22px;white-space:pre-line;}
-.neuro-detail-inner .bio.none{font-style:italic;color:var(--muted);text-align:center;}
-.neuro-tile:hover{border-color:var(--sage);transform:translateY(-2px);}
-.neuro-tile-photo{width:54px;height:54px;border-radius:50%;overflow:hidden;flex-shrink:0;border:1px solid var(--line);background:linear-gradient(135deg,#1c231d,#35402f 60%,#c6a15b 120%);display:flex;align-items:center;justify-content:center;}
-.neuro-tile-photo img{width:100%;height:100%;object-fit:cover;}
-.neuro-tile-photo .mono{color:var(--gold-soft);font-family:'Iowan Old Style',Georgia,serif;font-size:1rem;}
-.neuro-tile-name{font-size:0.92rem;color:var(--ink);}
+.neuro-rows{max-width:1100px;margin:0 auto;padding:0 24px;}
+.neuro-row{display:flex;gap:24px;align-items:flex-start;padding:28px 0;border-top:1px solid var(--line);}
+.neuro-row:first-child{border-top:none;}
+.neuro-row-photo{flex-shrink:0;width:88px;height:88px;border-radius:50%;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#1c231d,#35402f 60%,#c6a15b 120%);display:flex;align-items:center;justify-content:center;}
+.neuro-row-photo img{width:100%;height:100%;object-fit:cover;}
+.neuro-row-photo .mono{color:var(--gold-soft);font-family:'Iowan Old Style',Georgia,serif;font-size:1.1rem;}
+.neuro-row-info{flex-shrink:0;width:150px;padding-top:6px;}
+.neuro-row-name{font-size:1rem;color:var(--ink);display:block;margin-bottom:4px;border-bottom:1px solid transparent;transition:border-color .2s;width:fit-content;}
+.neuro-row-name:hover{border-color:var(--sage);}
+.neuro-row-count{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.neuro-strip{flex:1;display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;min-width:0;}
+.neuro-strip-item{flex:0 0 140px;cursor:pointer;}
+.neuro-strip-figure{aspect-ratio:1/1;overflow:hidden;background:#f1ece1;border:1px solid var(--line);position:relative;}
+.neuro-strip-figure img{width:100%;height:100%;object-fit:contain;transition:transform .3s;}
+.neuro-strip-item:hover .neuro-strip-figure img{transform:scale(1.06);}
+.neuro-strip-figure .sold-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--sold-red);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
+.neuro-strip-title{font-size:0.78rem;margin-top:8px;color:var(--ink);line-height:1.3;}
+.neuro-strip-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.66rem;letter-spacing:0.03em;color:var(--sage);margin-top:2px;}
+.neuro-strip-price.sold-price{color:var(--sold-red);}
 
 @media (max-width: 860px){
   .nav-links{display:none;}
@@ -292,7 +282,7 @@ footer{background:var(--ink);color:var(--muted);padding:60px 32px 34px;font-fami
 </section>
 
 <section class="section" id="special-thank-you">
-  <div class="neuro-intro"><div class="eyebrow">A Special Thank You</div><p>We are blessed by the participation and generosity of a wonderful group of neurodivergent young adults. Their inspiring artworks take pride of place at our art fundraising event and are honoured to showcase their talent. By purchasing their art you are also helping them become more financially independent!</p></div><p class="neuro-instruction">Click on an artist to see their profile and works.</p><div class="neuro-tile-grid"><div class="neuro-tile" id="artist-alicia-lee" data-slug="alicia-lee"><div class="neuro-tile-photo"><img src="bio-alicia-lee.jpg" alt="Alicia Lee"></div><div class="neuro-tile-name">Alicia Lee</div></div><div class="neuro-tile" id="artist-ng-yi-shen" data-slug="ng-yi-shen"><div class="neuro-tile-photo"><img src="bio-ng-yi-shen.jpg" alt="Ng Yi Shen"></div><div class="neuro-tile-name">Ng Yi Shen</div></div><div class="neuro-tile" id="artist-chung-xin-kai" data-slug="chung-xin-kai"><div class="neuro-tile-photo"><img src="bio-chung-xin-kai.jpg" alt="Chung Xin Kai"></div><div class="neuro-tile-name">Chung Xin Kai</div></div><div class="neuro-tile" id="artist-wallace-lion-liow" data-slug="wallace-lion-liow"><div class="neuro-tile-photo"><img src="bio-wallace-lion-liow.jpg" alt="Wallace Lion (Liow)"></div><div class="neuro-tile-name">Wallace Lion (Liow)</div></div><div class="neuro-tile" id="artist-stephanie-kuan-yeh-tzu" data-slug="stephanie-kuan-yeh-tzu"><div class="neuro-tile-photo"><img src="bio-stephanie-kuan-yeh-tzu.jpg" alt="Stephanie Kuan Yeh Tzu"></div><div class="neuro-tile-name">Stephanie Kuan Yeh Tzu</div></div><div class="neuro-tile" id="artist-shana-lim" data-slug="shana-lim"><div class="neuro-tile-photo"><img src="bio-shana-lim.jpg" alt="Shana Lim"></div><div class="neuro-tile-name">Shana Lim</div></div><div class="neuro-tile" id="artist-shafiq-nazri" data-slug="shafiq-nazri"><div class="neuro-tile-photo"><img src="bio-shafiq-nazri.jpg" alt="Shafiq Nazri"></div><div class="neuro-tile-name">Shafiq Nazri</div></div><div class="neuro-tile" id="artist-prajna-ganesh" data-slug="prajna-ganesh"><div class="neuro-tile-photo"><img src="bio-prajna-ganesh.jpg" alt="Prajna Ganesh"></div><div class="neuro-tile-name">Prajna Ganesh</div></div><div class="neuro-tile" id="artist-how-kae-riang-kelvin-how" data-slug="how-kae-riang-kelvin-how"><div class="neuro-tile-photo"><img src="bio-how-kae-riang.jpg" alt="How Kae Riang (Kelvin How)"></div><div class="neuro-tile-name">How Kae Riang (Kelvin How)</div></div><div class="neuro-tile" id="artist-thong-kah-wei" data-slug="thong-kah-wei"><div class="neuro-tile-photo"><img src="bio-thong-kah-wei.jpg" alt="Thong Kah Wei"></div><div class="neuro-tile-name">Thong Kah Wei</div></div><div class="neuro-tile" id="artist-janet-lee-1989-2023" data-slug="janet-lee-1989-2023"><div class="neuro-tile-photo"><img src="bio-janet-lee.jpg" alt="Janet Lee (1989-2023)"></div><div class="neuro-tile-name">Janet Lee (1989-2023)</div></div><div class="neuro-tile" id="artist-ian-kua-li-zhe" data-slug="ian-kua-li-zhe"><div class="neuro-tile-photo"><img src="bio-ian-kua-li-zhe.jpg" alt="Ian Kua Li Zhe"></div><div class="neuro-tile-name">Ian Kua Li Zhe</div></div><div class="neuro-tile" id="artist-chua-chong-sheng" data-slug="chua-chong-sheng"><div class="neuro-tile-photo"><img src="bio-chua-chong-sheng.jpg" alt="Chua Chong Sheng"></div><div class="neuro-tile-name">Chua Chong Sheng</div></div><div class="neuro-tile" id="artist-ainaa-farhanah-conteng-by-ainaa" data-slug="ainaa-farhanah-conteng-by-ainaa"><div class="neuro-tile-photo"><img src="bio-ainaa-farhanah-conteng-by-ainaa.jpg" alt="Ainaa Farhanah (Conteng by Ainaa)"></div><div class="neuro-tile-name">Ainaa Farhanah (Conteng by Ainaa)</div></div><div class="neuro-tile" id="artist-lim-yu-en" data-slug="lim-yu-en"><div class="neuro-tile-photo"><img src="bio-lim-yu-en.jpg" alt="Lim Yu En"></div><div class="neuro-tile-name">Lim Yu En</div></div></div><div class="neuro-detail-panel" id="neuroDetailPanel"></div>
+  <div class="neuro-intro"><div class="eyebrow">A Special Thank You</div><p>We are blessed by the participation and generosity of a wonderful group of neurodivergent young adults. Their inspiring artworks take pride of place at our art fundraising event and are honoured to showcase their talent. By purchasing their art you are also helping them become more financially independent!</p></div><div class="neuro-rows" id="neuroRows"></div>
 </section>
 
 <footer>
@@ -451,42 +441,38 @@ document.addEventListener('click', (e) => {
   desc.classList.toggle('clamped', !willExpand);
   toggle.textContent = willExpand ? 'Read less ←' : 'Read more →';
 });
-function renderNeuroDetail(slug){
-  const ar = artistsData.find(x => x.slug === slug);
-  if(!ar) return;
-  const works = artworks.filter(x => x.artistSlug === slug);
-  const countLabel = works.length + (works.length===1?' work':' works') + ' in the collection';
-  const photoHtml = ar.photo ? `<img src="${ar.photo}" alt="${ar.name}">` : `<span class="mono">${artistInitials(ar.name)}</span>`;
-  const bioHtml = ar.bio ? `<p class="bio">${ar.bio}</p>` : `<p class="bio none">Donor artist — biography not yet available.</p>`;
-  const worksHtml = works.map((w) => {
-    const sold = !!w.sold;
-    const priceLabel = w.price;
-    const priceClass = sold ? 'neuro-work-price sold-price' : 'neuro-work-price';
-    const title = w.title ? w.title : 'Untitled';
-    const ribbon = sold ? '<div class="sold-ribbon">Sold</div>' : '';
-    return `<div class="neuro-work open-modal" data-row="${w.row}">
-      <div class="neuro-work-figure"><img src="${w.img}" alt="${title}">${ribbon}</div>
-      <div class="neuro-work-title">${title}</div>
-      <div class="${priceClass}">${priceLabel}</div>
+function renderNeuroArtists(){
+  const container = document.getElementById('neuroRows');
+  if(!container) return;
+  container.innerHTML = Array.from(NEURO_SLUGS).map((slug) => {
+    const ar = artistsData.find(x => x.slug === slug);
+    if(!ar) return '';
+    const works = artworks.filter(x => x.artistSlug === slug);
+    if(!works.length) return '';
+    const countLabel = works.length + (works.length===1?' work':' works');
+    const photoHtml = ar.photo ? `<img src="${ar.photo}" alt="${ar.name}">` : `<span class="mono">${artistInitials(ar.name)}</span>`;
+    const worksHtml = works.map((w) => {
+      const sold = !!w.sold;
+      const priceClass = sold ? 'neuro-strip-price sold-price' : 'neuro-strip-price';
+      const title = w.title ? w.title : 'Untitled';
+      const ribbon = sold ? '<div class="sold-ribbon-sm">Sold</div>' : '';
+      return `<div class="neuro-strip-item open-modal" data-row="${w.row}">
+        <div class="neuro-strip-figure"><img src="${w.img}" alt="${title}">${ribbon}</div>
+        <div class="neuro-strip-title">${title}</div>
+        <div class="${priceClass}">${w.price}</div>
+      </div>`;
+    }).join('');
+    return `<div class="neuro-row">
+      <a href="meet-the-artists.html#artist-${slug}" class="neuro-row-photo open-artist-modal" data-slug="${slug}">${photoHtml}</a>
+      <div class="neuro-row-info">
+        <a href="meet-the-artists.html#artist-${slug}" class="neuro-row-name open-artist-modal" data-slug="${slug}">${ar.name}</a>
+        <span class="neuro-row-count">${countLabel}</span>
+      </div>
+      <div class="neuro-strip">${worksHtml}</div>
     </div>`;
   }).join('');
-  document.getElementById('neuroDetailPanel').innerHTML = `
-    <div class="neuro-detail-inner">
-      <div class="artist-photo">${photoHtml}</div>
-      <h2>${ar.name}</h2>
-      <span class="count">${countLabel}</span>
-      ${bioHtml}
-      <div class="neuro-works">${worksHtml}</div>
-    </div>`;
-  document.querySelectorAll('.neuro-tile').forEach((t) => t.classList.toggle('active', t.dataset.slug === slug));
-  document.getElementById('neuroDetailPanel').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
-document.addEventListener('click', (e) => {
-  const tile = e.target.closest('.neuro-tile');
-  if(!tile) return;
-  e.preventDefault();
-  renderNeuroDetail(tile.dataset.slug);
-});
+renderNeuroArtists();
 
 const overlay = document.getElementById('modalOverlay');
 function artistBio(slug){
