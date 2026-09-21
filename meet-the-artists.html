@@ -7,7 +7,7 @@
 <style>
 :root{
   --ink:#0f1410; --paper:#faf7f1; --panel:#161b17; --gold:#c6a15b; --gold-soft:#e4cfa0;
-  --sage:#4f6a56; --line: rgba(198,161,91,0.25); --muted:#9aa39c; --sold-red:#8c2f2f;
+  --sage:#4f6a56; --line: rgba(198,161,91,0.25); --muted:#9aa39c; --sold-red:#8c2f2f; --reserved-amber:#b8863b;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -67,6 +67,9 @@ nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-conte
 .sold-ribbon{position:absolute;top:10px;right:10px;background:var(--sold-red);color:#fff;
   font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
   padding:4px 10px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,0.3);}
+.reserved-ribbon{position:absolute;top:10px;right:10px;background:var(--reserved-amber);color:#fff;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,0.3);}
 .art-body{padding:24px 24px 28px;display:flex;flex-direction:column;flex:1;}
 .art-title{font-size:1.15rem;margin-bottom:4px;line-height:1.3;}
 .collection-tag{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
@@ -78,9 +81,11 @@ nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-conte
 .collection-thumb-figure img{width:100%;height:100%;object-fit:contain;transition:transform .3s;}
 .collection-thumb:hover .collection-thumb-figure img{transform:scale(1.08);}
 .collection-thumb-figure .sold-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--sold-red);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
+.collection-thumb-figure .reserved-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--reserved-amber);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
 .collection-thumb-title{font-size:0.62rem;margin-top:5px;color:var(--ink);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .collection-thumb-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.58rem;letter-spacing:0.02em;color:var(--sage);}
 .collection-thumb-price.sold-price{color:var(--sold-red);}
+.collection-thumb-price.reserved-price{color:var(--reserved-amber);}
 .art-title.untitled{font-style:italic;color:#6b6f66;font-size:1rem;}
 .art-artist-link{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.78rem;letter-spacing:0.04em;color:var(--sage);
   margin-bottom:12px;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid transparent;transition:border-color .2s;width:fit-content;}
@@ -95,6 +100,7 @@ nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-conte
 .art-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;}
 .art-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;letter-spacing:0.02em;margin-bottom:12px;}
 .art-price.sold-price{color:var(--sold-red);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:0.82rem;}
+.art-price.reserved-price{color:var(--reserved-amber);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:0.82rem;}
 .art-price small{display:block;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
 .bid-link{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s;cursor:pointer;}
 .bid-link:hover{color:var(--sage);}
@@ -114,6 +120,7 @@ footer{background:var(--ink);color:var(--muted);padding:60px 32px 34px;font-fami
 .modal-figure{aspect-ratio:4/5;position:relative;background:#f1ece1;}
 .modal-figure img{width:100%;height:100%;object-fit:contain;cursor:pointer;}
 .modal-sold{position:absolute;top:20px;left:-38px;transform:rotate(-40deg);background:var(--sold-red);color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:7px 50px;box-shadow:0 3px 10px rgba(0,0,0,0.35);}
+.modal-sold.reserved{background:var(--reserved-amber);}
 .modal-body{padding:44px;position:relative;}
 .modal-artist-bio{border-top:1px solid var(--line);padding-top:22px;margin-bottom:24px;}
 .modal-artist-bio .bio-label{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);margin-bottom:10px;}
@@ -164,9 +171,11 @@ footer{background:var(--ink);color:var(--muted);padding:60px 32px 34px;font-fami
 .neuro-strip-figure img{width:100%;height:100%;object-fit:contain;transition:transform .3s;}
 .neuro-strip-item:hover .neuro-strip-figure img{transform:scale(1.06);}
 .neuro-strip-figure .sold-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--sold-red);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
+.neuro-strip-figure .reserved-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--reserved-amber);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
 .neuro-strip-title{font-size:0.78rem;margin-top:8px;color:var(--ink);line-height:1.3;}
 .neuro-strip-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.66rem;letter-spacing:0.03em;color:var(--sage);margin-top:2px;}
 .neuro-strip-price.sold-price{color:var(--sold-red);}
+.neuro-strip-price.reserved-price{color:var(--reserved-amber);}
 
 @media (max-width: 860px){
   .nav-links{display:none;}
@@ -203,7 +212,7 @@ footer{background:var(--ink);color:var(--muted);padding:60px 32px 34px;font-fami
 </div>
 
 <section class="section" style="padding-top:80px;">
-  <div class="artist-index"><a href="#artist-t-wong">T Wong</a><a href="#artist-tt">TT</a><a href="#artist-tj-rameli">TJ Rameli</a><a href="#artist-chi-chern-fa-shi">Chi Chern Fa Shi (继程法师)</a><a href="#artist-lin-ho">Lin Ho</a><a href="#artist-tew-nai-tong">Tew Nai Tong (1936-2013)</a><a href="#artist-chong-siew-ying">Chong Siew Ying</a><a href="#artist-ibrahim-hussein">Datuk Ibrahim Hussein</a><a href="#artist-sc-shekar">SC Shekar</a><a href="#artist-chua-chong-sheng">Chua Chong Sheng</a><a href="#artist-chung-xin-kai">Chung Xin Kai</a><a href="#artist-how-kae-riang-kelvin-how">How Kae Riang (Kelvin How)</a><a href="#artist-janet-lee-1989-2023">Janet Lee (1989-2023)</a><a href="#artist-lim-yu-en">Lim Yu En</a><a href="#artist-mohd-azlan-mam">Mohd Azlan MAM</a><a href="#artist-ng-yi-shen">Ng Yi Shen</a><a href="#artist-prajna-ganesh">Prajna Ganesh</a><a href="#artist-shafiq-nazri">Shafiq Nazri</a><a href="#artist-shana-lim">Shana Lim</a><a href="#artist-stephanie-kuan-yeh-tzu">Stephanie Kuan Yeh Tzu</a><a href="#artist-thong-kah-wei">Thong Kah Wei</a><a href="#artist-wallace-lion-liow">Wallace Lion (Liow)</a><a href="#artist-harris-ribut">Harris Ribut</a><a href="#artist-alicia-lee">Alicia Lee</a><a href="#artist-ainaa-farhanah-conteng-by-ainaa">Ainaa Farhanah (Conteng by Ainaa)</a><a href="#artist-anurendra-jegadeva">Anurendra Jegadeva</a><a href="#artist-chang-fee-ming">Chang Fee Ming</a><a href="#artist-dr-kc-goh">Dr KC Goh</a><a href="#artist-dr-neoh-chin-boon">Dr Neoh Chin Boon</a><a href="#artist-ian-kua-li-zhe">Ian Kua Li Zhe</a><a href="#artist-kek-hoon-ping">Kek Hoon Ping</a><a href="#artist-master-sum-kwai-fong">Master Sum Kwai Fong</a><a href="#artist-nik-mohd-shahfiz">Nik Mohd Shahfiz</a><a href="#artist-yew-chin-yih">Yew Chin Yih</a><a href="#artist-dr-suren-thuraisingham">Dr Suren Thuraisingham</a><a href="#artist-lee-dr">Lee DR</a><a href="#artist-anonymous">Anonymous</a><a href="#artist-unknown">Unknown</a><a href="#artist-allison-tan">Allison Tan</a><a href="#artist-lim-kok-hong">Lim Kok Hong</a><a href="#artist-noni-taib">Noni Taib</a><a href="#artist-wong-jiong-nong">Wong Jiong Nong</a></div>
+  <div class="artist-index"><a href="#artist-t-wong">T Wong</a><a href="#artist-tt">TT</a><a href="#artist-tj-rameli">TJ Rameli</a><a href="#artist-chi-chern-fa-shi">Chi Chern Fa Shi (继程法师)</a><a href="#artist-lin-ho">Lin Ho</a><a href="#artist-tew-nai-tong">Tew Nai Tong (1936-2013)</a><a href="#artist-chong-siew-ying">Chong Siew Ying</a><a href="#artist-ibrahim-hussein">Datuk Ibrahim Hussein</a><a href="#artist-sc-shekar">SC Shekar</a><a href="#artist-chua-chong-sheng">Chua Chong Sheng</a><a href="#artist-chung-xin-kai">Chung Xin Kai</a><a href="#artist-how-kae-riang-kelvin-how">How Kae Riang (Kelvin How)</a><a href="#artist-janet-lee-1989-2023">Janet Lee (1989-2023)</a><a href="#artist-lim-yu-en">Lim Yu En</a><a href="#artist-mohd-azlan-mam">Mohd Azlan MAM</a><a href="#artist-ng-yi-shen">Ng Yi Shen</a><a href="#artist-prajna-ganesh">Prajna Ganesh</a><a href="#artist-shafiq-nazri">Shafiq Nazri</a><a href="#artist-shana-lim">Shana Lim</a><a href="#artist-stephanie-kuan-yeh-tzu">Stephanie Kuan Yeh Tzu</a><a href="#artist-thong-kah-wei">Thong Kah Wei</a><a href="#artist-wallace-lion-liow">Wallace Lion (Liow)</a><a href="#artist-harris-ribut">Harris Ribut</a><a href="#artist-alicia-lee">Alicia Lee</a><a href="#artist-ainaa-farhanah-conteng-by-ainaa">Ainaa Farhanah (Conteng by Ainaa)</a><a href="#artist-anurendra-jegadeva">Anurendra Jegadeva</a><a href="#artist-chang-fee-ming">Chang Fee Ming</a><a href="#artist-dr-kc-goh">Dr KC Goh</a><a href="#artist-dr-neoh-chin-boon">Dr Neoh Chin Boon</a><a href="#artist-ian-kua-li-zhe">Ian Kua Li Zhe</a><a href="#artist-kek-hoon-ping">Kek Hoon Ping</a><a href="#artist-master-sum-kwai-fong">Master Sum Kwai Fong</a><a href="#artist-nik-mohd-shahfiz">Nik Mohd Shahfiz</a><a href="#artist-yew-chin-yih">Yew Chin Yih</a><a href="#artist-dr-suren-thuraisingham">Dr Suren Thuraisingham</a><a href="#artist-lee-dr">Lee DR</a><a href="#artist-anonymous">Anonymous</a><a href="#artist-unknown">Unknown</a><a href="#artist-allison-tan">Allison Tan</a><a href="#artist-lim-kok-hong">Lim Kok Hong</a><a href="#artist-noni-taib">Noni Taib</a><a href="#artist-wong-jiong-nong">Wong Jiong Nong</a><a href="#artist-xiao-yao-tian">Xiao Yao Tian</a></div>
   
     <div class="artist-profile" id="artist-t-wong">
       <div class="artist-photo"><span class="mono">TW</span></div>
@@ -579,7 +588,7 @@ Inspired by nature, his colourful paintings convey messages of environmental con
       <p class="bio none">Donor artist — biography not yet available.</p>
       <div class="artist-works"><div class="artist-work-thumb open-modal" data-row="71"><img src="art-unknown-dance-with-me-71.jpeg" alt=""></div><div class="artist-work-thumb open-modal" data-row="72"><img src="art-unknown-porto-bella-72.jpeg" alt=""></div></div>
     </div>
-<div class="artist-profile" id="artist-allison-tan"><div class="artist-photo"><span class="mono">AT</span></div><h2>Allison Tan</h2><span class="count">4 works in the collection</span><p class="bio">Allison Tan is a Malaysian producer of the award-winning documentary Thirty Two, whose work has long been rooted in storytelling, memory, and the expression of meaning beyond words. Her approach to Chinese calligraphy is instinctive and distinctly contemporary—part language, part image, part architecture. Deliberately substantial and imperfect, her characters feel at once ancient and unexpectedly modern, exploring themes of freedom, memory, time, and the inner life.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="75"><img src="art-allison-tan-great-freedom-unbound-75.jpeg" alt=""></div><div class="artist-work-thumb open-modal" data-row="76"><img src="art-allison-tan-empty-heart-welcomes-light-76.jpeg" alt=""></div><div class="artist-work-thumb open-modal" data-row="77"><img src="art-allison-tan-unshaken-77.jpeg" alt=""></div><div class="artist-work-thumb open-modal" data-row="78"><img src="art-allison-tan-home-78.jpeg" alt=""></div></div></div><div class="artist-profile" id="artist-lim-kok-hong"><div class="artist-photo"><span class="mono">LK</span></div><h2>Lim Kok Hong</h2><span class="count">7 works in the collection</span><p class="bio">Fresh out of art college in 2002, Lim Kok Hong took part in a series of solo and joint exhibitions that caught the eye of a Singapore-based "Asia Pop" company, who handpicked him to head their creative department. In 2006 he moved to Hong Kong to join Disney's creative design and production team for the Walt Disney theme park, then returned to Malaysia after two years to open his own art gallery in Bangsar, supporting local and overseas artists. He went on to establish Hong's Creative Space, a commercial art studio and custom framing consultancy at Publika Gallery. With nearly 20 years in the creative industry, Hong has produced sculptures, paintings and art installations for corporate headquarters, hotels and private homes across Malaysia, Hong Kong and the Middle East. His production facility "The Art Factory" in Klang — a three-storey space inspired by Andy Warhol's "Silver Factory" — creates work exported and exhibited internationally, with an in-house fine art printing and silkscreen department run in partnership with London-based V.I.P. International. In 2019 he joined British Pop artist Jonny Zerox and French gallery owner Edith Ho as part of Gung Ho Designs Studio, running a production factory and 8,000 sq ft exhibition gallery at Tropicana Golf & Country Club.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="79"><img src="art-lim-kok-hong-who-else-still-remembers-him-pak-yusof-79.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="80"><img src="art-lim-kok-hong-who-else-still-remembers-him-pak-aman-80.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="81"><img src="art-lim-kok-hong-who-else-still-remembers-him-pak-hassan-81.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="82"><img src="art-lim-kok-hong-crossover-82.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="83"><img src="art-lim-kok-hong-this-is-their-life-kak-nor-83.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="84"><img src="art-lim-kok-hong-who-else-still-remembers-him-pak-ayu-84.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="85"><img src="art-lim-kok-hong-this-is-their-life-makcik-fatimah-85.png" alt=""></div></div></div><div class="artist-profile" id="artist-noni-taib"><div class="artist-photo"><span class="mono">NT</span></div><h2>Noni Taib</h2><span class="count">1 work in the collection</span><p class="bio">Studied music at the Trinity College of Music in London. Lived in Paris for 18 years, undoubtedly influenced by the French Masters. Her artworks are displayed in Maybank, KL.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="86"><img src="art-noni-taib-abstract-art-86.jpeg" alt=""></div></div></div><div class="artist-profile" id="artist-wong-jiong-nong"><div class="artist-photo"><span class="mono">WJ</span></div><h2>Wong Jiong Nong</h2><span class="count">2 works in the collection</span><p class="bio">Graduated from Nanyang Academy of Fine Arts, Singapore in 1964. He had participated in numerous art exhibitions from 1968-1985.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="87"><img src="art-wong-jiong-nong-untitled-kampung-house-87.jpg" alt=""></div><div class="artist-work-thumb open-modal" data-row="88"><img src="art-wong-jiong-nong-untitled-fishing-boats-88.jpg" alt=""></div></div></div></section>
+<div class="artist-profile" id="artist-allison-tan"><div class="artist-photo"><span class="mono">AT</span></div><h2>Allison Tan</h2><span class="count">4 works in the collection</span><p class="bio">Allison Tan is a Malaysian producer of the award-winning documentary Thirty Two, whose work has long been rooted in storytelling, memory, and the expression of meaning beyond words. Her approach to Chinese calligraphy is instinctive and distinctly contemporary—part language, part image, part architecture. Deliberately substantial and imperfect, her characters feel at once ancient and unexpectedly modern, exploring themes of freedom, memory, time, and the inner life.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="75"><img src="art-allison-tan-great-freedom-unbound-75.jpeg" alt=""></div><div class="artist-work-thumb open-modal" data-row="76"><img src="art-allison-tan-empty-heart-welcomes-light-76.jpeg" alt=""></div><div class="artist-work-thumb open-modal" data-row="77"><img src="art-allison-tan-unshaken-77.jpeg" alt=""></div><div class="artist-work-thumb open-modal" data-row="78"><img src="art-allison-tan-home-78.jpeg" alt=""></div></div></div><div class="artist-profile" id="artist-lim-kok-hong"><div class="artist-photo"><span class="mono">LK</span></div><h2>Lim Kok Hong</h2><span class="count">7 works in the collection</span><p class="bio">Fresh out of art college in 2002, Lim Kok Hong took part in a series of solo and joint exhibitions that caught the eye of a Singapore-based "Asia Pop" company, who handpicked him to head their creative department. In 2006 he moved to Hong Kong to join Disney's creative design and production team for the Walt Disney theme park, then returned to Malaysia after two years to open his own art gallery in Bangsar, supporting local and overseas artists. He went on to establish Hong's Creative Space, a commercial art studio and custom framing consultancy at Publika Gallery. With nearly 20 years in the creative industry, Hong has produced sculptures, paintings and art installations for corporate headquarters, hotels and private homes across Malaysia, Hong Kong and the Middle East. His production facility "The Art Factory" in Klang — a three-storey space inspired by Andy Warhol's "Silver Factory" — creates work exported and exhibited internationally, with an in-house fine art printing and silkscreen department run in partnership with London-based V.I.P. International. In 2019 he joined British Pop artist Jonny Zerox and French gallery owner Edith Ho as part of Gung Ho Designs Studio, running a production factory and 8,000 sq ft exhibition gallery at Tropicana Golf & Country Club.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="79"><img src="art-lim-kok-hong-who-else-still-remembers-him-pak-yusof-79.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="80"><img src="art-lim-kok-hong-who-else-still-remembers-him-pak-aman-80.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="81"><img src="art-lim-kok-hong-who-else-still-remembers-him-pak-hassan-81.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="82"><img src="art-lim-kok-hong-crossover-82.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="83"><img src="art-lim-kok-hong-this-is-their-life-kak-nor-83.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="84"><img src="art-lim-kok-hong-who-else-still-remembers-him-pak-ayu-84.png" alt=""></div><div class="artist-work-thumb open-modal" data-row="85"><img src="art-lim-kok-hong-this-is-their-life-makcik-fatimah-85.png" alt=""></div></div></div><div class="artist-profile" id="artist-noni-taib"><div class="artist-photo"><span class="mono">NT</span></div><h2>Noni Taib</h2><span class="count">1 work in the collection</span><p class="bio">Studied music at the Trinity College of Music in London. Lived in Paris for 18 years, undoubtedly influenced by the French Masters. Her artworks are displayed in Maybank, KL.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="86"><img src="art-noni-taib-abstract-art-86.jpeg" alt=""></div></div></div><div class="artist-profile" id="artist-wong-jiong-nong"><div class="artist-photo"><span class="mono">WJ</span></div><h2>Wong Jiong Nong</h2><span class="count">2 works in the collection</span><p class="bio">Graduated from Nanyang Academy of Fine Arts, Singapore in 1964. He had participated in numerous art exhibitions from 1968-1985.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="87"><img src="art-wong-jiong-nong-untitled-kampung-house-87.jpg" alt=""></div><div class="artist-work-thumb open-modal" data-row="88"><img src="art-wong-jiong-nong-untitled-fishing-boats-88.jpg" alt=""></div></div></div><div class="artist-profile" id="artist-xiao-yao-tian"><div class="artist-photo"><span class="mono">XY</span></div><h2>Xiao Yao Tian</h2><span class="count">2 works in the collection</span><p class="bio none">Donor artist — biography not yet available.</p><div class="artist-works"><div class="artist-work-thumb open-modal" data-row="89"><img src="art-xiao-yao-tian-chinese-calligraphy-89.jpg" alt=""></div><div class="artist-work-thumb open-modal" data-row="90"><img src="art-xiao-yao-tian-chinese-calligraphy-90.jpg" alt=""></div></div></div></section>
 
 <footer>
   <div class="footer-inner">
@@ -853,7 +862,7 @@ const artworks = {
       "year": null,
       "meta": "Photoprint · 2ft x 3ft",
       "price": "RM 5,000",
-      "sold": false,
+      "sold": true,
       "desc": "",
       "img": "art-sc-shekar-kuala-lumpurs-other-skyline-50.jpeg"
     },
@@ -881,7 +890,7 @@ const artworks = {
       "year": null,
       "meta": "Oil (monochrome) · 8x32 in",
       "price": "RM 2,500",
-      "sold": true,
+      "sold": false,
       "desc": "",
       "img": "art-harris-ribut-untitled-market-procession-24.jpg",
       "collectionId": "harris-ribut",
@@ -1146,6 +1155,7 @@ const artworks = {
       "meta": "Mixed media",
       "price": "RM 7,500",
       "sold": false,
+      "reserved": true,
       "desc": "This masterpiece artwork is a pointillism-style painting featuring a rooster, a hen and yellow pumpkins in a farmyard setting. The technique used involves small, distinct dots of colour applied in patterns to form an image, resembling mosaics or tissue paper art.\n\nMaster Sum Kwai Fong (1948–2024) was a distinguished Malaysian Chinese calligraphy & brush painting artist. He dedicated his life to preserving and promoting the beauty of traditional Chinese art.\n\nA graduate of the Malaysian Institute of Art (MIA), Master Sum began his teaching career in 1975 and spent his life mentoring and inspiring students. He is recognised as one of the world's top 100 Chinese calligraphy and brush painting artists.\n\nMaster Sum was also a founding member and past president of the 1 Malaysia Artists Association, where he made significant contributions to the growth and appreciation of Chinese art in Malaysia.\n\nThroughout his career he held many exhibitions and charity functions, and his paintings were acquired by collectors and art enthusiasts.\n\nMaster Sum once said in an interview: “The creation of art in painting is not only a painting on the surface, nor is it an objective copy of the picture of life. Instead, it is the artist's understanding of life, attitude towards social things, and the expression of his own thoughts and personality.”",
       "img": "art-master-sum-kwai-fong-untitled-rooster-hens-44.jpg",
       "collectionId": "master-sum-kwai-fong",
@@ -1992,6 +2002,38 @@ const artworks = {
       "img": "art-wong-jiong-nong-untitled-fishing-boats-88.jpg",
       "collectionId": "wong-jiong-nong",
       "collectionLabel": "A Collection by Wong Jiong Nong"
+    },
+    {
+      "row": 89,
+      "title": "Chinese Calligraphy",
+      "artistSlug": "xiao-yao-tian",
+      "artist": "Xiao Yao Tian",
+      "medium": "Chinese ink on paper",
+      "size": "74cm (h) x 35cm (w)",
+      "year": null,
+      "meta": "Chinese ink on paper · 74cm (h) x 35cm (w)",
+      "price": "RM 4,500",
+      "sold": false,
+      "desc": "",
+      "img": "art-xiao-yao-tian-chinese-calligraphy-89.jpg",
+      "collectionId": "xiao-yao-tian",
+      "collectionLabel": "A Collection by Xiao Yao Tian"
+    },
+    {
+      "row": 90,
+      "title": "Chinese Calligraphy",
+      "artistSlug": "xiao-yao-tian",
+      "artist": "Xiao Yao Tian",
+      "medium": "Chinese ink on paper",
+      "size": "68cm (h) x 36cm (w)",
+      "year": null,
+      "meta": "Chinese ink on paper · 68cm (h) x 36cm (w)",
+      "price": "RM 4,800",
+      "sold": false,
+      "desc": "",
+      "img": "art-xiao-yao-tian-chinese-calligraphy-90.jpg",
+      "collectionId": "xiao-yao-tian",
+      "collectionLabel": "A Collection by Xiao Yao Tian"
     }
   ]
 }.artworks;
@@ -2248,6 +2290,12 @@ const artistsData = {
       "name": "Wong Jiong Nong",
       "bio": "Graduated from Nanyang Academy of Fine Arts, Singapore in 1964. He had participated in numerous art exhibitions from 1968-1985.",
       "photo": null
+    },
+    {
+      "slug": "xiao-yao-tian",
+      "name": "Xiao Yao Tian",
+      "bio": "",
+      "photo": null
     }
   ]
 }.artists;
@@ -2264,8 +2312,12 @@ function openModal(row){
   const a = artworks.find(x => x.row === row);
   if(!a) return;
   currentModalRow = row;
+  const isReserved = !!a.reserved && !a.sold;
   document.getElementById('modalImg').src = a.img;
-  document.getElementById('modalSold').style.display = a.sold ? 'block' : 'none';
+  const modalSoldEl = document.getElementById('modalSold');
+  modalSoldEl.style.display = (a.sold || isReserved) ? 'block' : 'none';
+  modalSoldEl.textContent = a.sold ? 'Sold' : (isReserved ? 'Reserved' : '');
+  modalSoldEl.classList.toggle('reserved', isReserved);
   document.getElementById('modalMeta').textContent = a.meta;
   document.getElementById('modalTitle').textContent = a.title ? a.title : 'Untitled';
   const artistLink = document.getElementById('modalArtist');
@@ -2275,7 +2327,7 @@ function openModal(row){
   const bioText = artistBio(a.artistSlug);
   document.getElementById('modalArtistBio').textContent = bioText;
   document.getElementById('modalArtistBioWrap').style.display = bioText ? 'block' : 'none';
-  document.getElementById('modalPriceLabel').textContent = a.sold ? 'Sold' : 'Reserve Price';
+  document.getElementById('modalPriceLabel').textContent = a.sold ? 'Sold' : (isReserved ? 'Reserved' : 'Reserve Price');
   document.getElementById('modalPrice').textContent = a.price;
   const inSet = a.collectionId && artworks.filter(x => x.collectionId === a.collectionId).length > 1;
   modalPrevBtn.style.display = inSet ? 'flex' : 'none';

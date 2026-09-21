@@ -7,7 +7,7 @@
 <style>
 :root{
   --ink:#0f1410; --paper:#faf7f1; --panel:#161b17; --gold:#c6a15b; --gold-soft:#e4cfa0;
-  --sage:#4f6a56; --line: rgba(198,161,91,0.25); --muted:#9aa39c; --sold-red:#8c2f2f;
+  --sage:#4f6a56; --line: rgba(198,161,91,0.25); --muted:#9aa39c; --sold-red:#8c2f2f; --reserved-amber:#b8863b;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -67,6 +67,9 @@ nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-conte
 .sold-ribbon{position:absolute;top:10px;right:10px;background:var(--sold-red);color:#fff;
   font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
   padding:4px 10px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,0.3);}
+.reserved-ribbon{position:absolute;top:10px;right:10px;background:var(--reserved-amber);color:#fff;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,0.3);}
 .art-body{padding:24px 24px 28px;display:flex;flex-direction:column;flex:1;}
 .art-title{font-size:1.15rem;margin-bottom:4px;line-height:1.3;}
 .collection-tag{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
@@ -78,9 +81,11 @@ nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-conte
 .collection-thumb-figure img{width:100%;height:100%;object-fit:contain;transition:transform .3s;}
 .collection-thumb:hover .collection-thumb-figure img{transform:scale(1.08);}
 .collection-thumb-figure .sold-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--sold-red);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
+.collection-thumb-figure .reserved-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--reserved-amber);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
 .collection-thumb-title{font-size:0.62rem;margin-top:5px;color:var(--ink);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .collection-thumb-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.58rem;letter-spacing:0.02em;color:var(--sage);}
 .collection-thumb-price.sold-price{color:var(--sold-red);}
+.collection-thumb-price.reserved-price{color:var(--reserved-amber);}
 .art-title.untitled{font-style:italic;color:#6b6f66;font-size:1rem;}
 .art-artist-link{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.78rem;letter-spacing:0.04em;color:var(--sage);
   margin-bottom:12px;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid transparent;transition:border-color .2s;width:fit-content;}
@@ -95,6 +100,7 @@ nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-conte
 .art-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;}
 .art-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.95rem;letter-spacing:0.02em;margin-bottom:12px;}
 .art-price.sold-price{color:var(--sold-red);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:0.82rem;}
+.art-price.reserved-price{color:var(--reserved-amber);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:0.82rem;}
 .art-price small{display:block;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
 .bid-link{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s;cursor:pointer;}
 .bid-link:hover{color:var(--sage);}
@@ -114,6 +120,7 @@ footer{background:var(--ink);color:var(--muted);padding:60px 32px 34px;font-fami
 .modal-figure{aspect-ratio:4/5;position:relative;background:#f1ece1;}
 .modal-figure img{width:100%;height:100%;object-fit:contain;cursor:pointer;}
 .modal-sold{position:absolute;top:20px;left:-38px;transform:rotate(-40deg);background:var(--sold-red);color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:7px 50px;box-shadow:0 3px 10px rgba(0,0,0,0.35);}
+.modal-sold.reserved{background:var(--reserved-amber);}
 .modal-body{padding:44px;position:relative;}
 .modal-artist-bio{border-top:1px solid var(--line);padding-top:22px;margin-bottom:24px;}
 .modal-artist-bio .bio-label{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);margin-bottom:10px;}
@@ -165,9 +172,11 @@ footer{background:var(--ink);color:var(--muted);padding:60px 32px 34px;font-fami
 .neuro-strip-figure img{width:100%;height:100%;object-fit:contain;transition:transform .3s;}
 .neuro-strip-item:hover .neuro-strip-figure img{transform:scale(1.06);}
 .neuro-strip-figure .sold-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--sold-red);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
+.neuro-strip-figure .reserved-ribbon-sm{position:absolute;top:4px;right:4px;background:var(--reserved-amber);color:#fff;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;padding:2px 6px;}
 .neuro-strip-title{font-size:0.78rem;margin-top:8px;color:var(--ink);line-height:1.3;}
 .neuro-strip-price{font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.66rem;letter-spacing:0.03em;color:var(--sage);margin-top:2px;}
 .neuro-strip-price.sold-price{color:var(--sold-red);}
+.neuro-strip-price.reserved-price{color:var(--reserved-amber);}
 
 @media (max-width: 860px){
   .nav-links{display:none;}
@@ -564,7 +573,7 @@ const artworks = {
       "year": null,
       "meta": "Photoprint · 2ft x 3ft",
       "price": "RM 5,000",
-      "sold": false,
+      "sold": true,
       "desc": "",
       "img": "art-sc-shekar-kuala-lumpurs-other-skyline-50.jpeg"
     },
@@ -592,7 +601,7 @@ const artworks = {
       "year": null,
       "meta": "Oil (monochrome) · 8x32 in",
       "price": "RM 2,500",
-      "sold": true,
+      "sold": false,
       "desc": "",
       "img": "art-harris-ribut-untitled-market-procession-24.jpg",
       "collectionId": "harris-ribut",
@@ -857,6 +866,7 @@ const artworks = {
       "meta": "Mixed media",
       "price": "RM 7,500",
       "sold": false,
+      "reserved": true,
       "desc": "This masterpiece artwork is a pointillism-style painting featuring a rooster, a hen and yellow pumpkins in a farmyard setting. The technique used involves small, distinct dots of colour applied in patterns to form an image, resembling mosaics or tissue paper art.\n\nMaster Sum Kwai Fong (1948–2024) was a distinguished Malaysian Chinese calligraphy & brush painting artist. He dedicated his life to preserving and promoting the beauty of traditional Chinese art.\n\nA graduate of the Malaysian Institute of Art (MIA), Master Sum began his teaching career in 1975 and spent his life mentoring and inspiring students. He is recognised as one of the world's top 100 Chinese calligraphy and brush painting artists.\n\nMaster Sum was also a founding member and past president of the 1 Malaysia Artists Association, where he made significant contributions to the growth and appreciation of Chinese art in Malaysia.\n\nThroughout his career he held many exhibitions and charity functions, and his paintings were acquired by collectors and art enthusiasts.\n\nMaster Sum once said in an interview: “The creation of art in painting is not only a painting on the surface, nor is it an objective copy of the picture of life. Instead, it is the artist's understanding of life, attitude towards social things, and the expression of his own thoughts and personality.”",
       "img": "art-master-sum-kwai-fong-untitled-rooster-hens-44.jpg",
       "collectionId": "master-sum-kwai-fong",
@@ -1703,6 +1713,38 @@ const artworks = {
       "img": "art-wong-jiong-nong-untitled-fishing-boats-88.jpg",
       "collectionId": "wong-jiong-nong",
       "collectionLabel": "A Collection by Wong Jiong Nong"
+    },
+    {
+      "row": 89,
+      "title": "Chinese Calligraphy",
+      "artistSlug": "xiao-yao-tian",
+      "artist": "Xiao Yao Tian",
+      "medium": "Chinese ink on paper",
+      "size": "74cm (h) x 35cm (w)",
+      "year": null,
+      "meta": "Chinese ink on paper · 74cm (h) x 35cm (w)",
+      "price": "RM 4,500",
+      "sold": false,
+      "desc": "",
+      "img": "art-xiao-yao-tian-chinese-calligraphy-89.jpg",
+      "collectionId": "xiao-yao-tian",
+      "collectionLabel": "A Collection by Xiao Yao Tian"
+    },
+    {
+      "row": 90,
+      "title": "Chinese Calligraphy",
+      "artistSlug": "xiao-yao-tian",
+      "artist": "Xiao Yao Tian",
+      "medium": "Chinese ink on paper",
+      "size": "68cm (h) x 36cm (w)",
+      "year": null,
+      "meta": "Chinese ink on paper · 68cm (h) x 36cm (w)",
+      "price": "RM 4,800",
+      "sold": false,
+      "desc": "",
+      "img": "art-xiao-yao-tian-chinese-calligraphy-90.jpg",
+      "collectionId": "xiao-yao-tian",
+      "collectionLabel": "A Collection by Xiao Yao Tian"
     }
   ]
 }.artworks;
@@ -1959,6 +2001,12 @@ const artistsData = {
       "name": "Wong Jiong Nong",
       "bio": "Graduated from Nanyang Academy of Fine Arts, Singapore in 1964. He had participated in numerous art exhibitions from 1968-1985.",
       "photo": null
+    },
+    {
+      "slug": "xiao-yao-tian",
+      "name": "Xiao Yao Tian",
+      "bio": "",
+      "photo": null
     }
   ]
 }.artists;
@@ -1966,20 +2014,24 @@ const NEURO_SLUGS = new Set(["alicia-lee", "ng-yi-shen", "chung-xin-kai", "walla
 const grid = document.getElementById('galleryGrid');
 
 function singleCardHtml(a){
+  const isReserved = !!a.reserved && !a.sold;
+  const ribbon = a.sold ? '<div class="sold-ribbon">Sold</div>' : (isReserved ? '<div class="reserved-ribbon">Reserved</div>' : '');
+  const priceClass = a.sold ? 'sold-price' : (isReserved ? 'reserved-price' : '');
+  const priceLabel = a.sold ? 'Sold' : (isReserved ? 'Reserved' : 'Reserve Price');
   return `
       <div class="art-figure open-modal" data-row="${a.row}">
         <img src="${a.img}" alt="${a.title || a.artist}">
-        ${a.sold ? '<div class="sold-ribbon">Sold</div>' : ''}
+        ${ribbon}
       </div>
       <div class="art-body">
         <div class="art-title ${a.title ? '' : 'untitled'}">${a.title ? a.title : 'Untitled'}</div>
-        <div class="art-price ${a.sold ? 'sold-price' : ''}"><small>${a.sold ? 'Sold' : 'Reserve Price'}</small>${a.price}</div>
+        <div class="art-price ${priceClass}"><small>${priceLabel}</small>${a.price}</div>
         <a href="meet-the-artists.html#artist-${a.artistSlug}" class="art-artist-link open-artist-modal" data-slug="${a.artistSlug}">by ${a.artist} <span class="arrow">&rarr;</span></a>
         <div class="art-meta">${a.meta}</div>
         <p class="art-desc ${artistBio(a.artistSlug).length > 150 ? 'clamped' : ''}">${artistBio(a.artistSlug)}</p>
         ${artistBio(a.artistSlug).length > 150 ? `<span class="read-more bio-toggle">Read more &rarr;</span>` : ''}
         <div class="art-foot">
-          <a class="bid-link open-modal" data-row="${a.row}">${a.sold ? 'View' : 'Inquire'}</a>
+          <a class="bid-link open-modal" data-row="${a.row}">${(a.sold || isReserved) ? 'View' : 'Inquire'}</a>
         </div>
       </div>
   `;
@@ -1989,9 +2041,10 @@ function collectionCardHtml(items){
   const main = items[0];
   const rest = items.slice(1);
   const thumbsHtml = rest.map((a) => {
+    const aReserved = !!a.reserved && !a.sold;
     const priceLabel = a.price;
-    const priceClass = a.sold ? 'collection-thumb-price sold-price' : 'collection-thumb-price';
-    const ribbon = a.sold ? '<div class="sold-ribbon-sm">Sold</div>' : '';
+    const priceClass = a.sold ? 'collection-thumb-price sold-price' : (aReserved ? 'collection-thumb-price reserved-price' : 'collection-thumb-price');
+    const ribbon = a.sold ? '<div class="sold-ribbon-sm">Sold</div>' : (aReserved ? '<div class="reserved-ribbon-sm">Reserved</div>' : '');
     return `
       <div class="collection-thumb open-modal" data-row="${a.row}">
         <div class="collection-thumb-figure"><img src="${a.img}" alt="${a.title||a.artist}">${ribbon}</div>
@@ -1999,22 +2052,26 @@ function collectionCardHtml(items){
         <div class="${priceClass}">${priceLabel}</div>
       </div>`;
   }).join('');
+  const mainReserved = !!main.reserved && !main.sold;
+  const mainRibbon = main.sold ? '<div class="sold-ribbon">Sold</div>' : (mainReserved ? '<div class="reserved-ribbon">Reserved</div>' : '');
+  const mainPriceClass = main.sold ? 'sold-price' : (mainReserved ? 'reserved-price' : '');
+  const mainPriceLabel = main.sold ? 'Sold' : (mainReserved ? 'Reserved' : 'Reserve Price');
   return `
       <div class="art-figure open-modal" data-row="${main.row}">
         <img src="${main.img}" alt="${main.title||main.artist}">
-        ${main.sold ? '<div class="sold-ribbon">Sold</div>' : ''}
+        ${mainRibbon}
       </div>
       ${rest.length ? `<div class="collection-thumbs">${thumbsHtml}</div>` : ''}
       <div class="art-body">
         <div class="collection-tag sans">${main.collectionLabel}</div>
         <div class="art-title ${main.title ? '' : 'untitled'}">${main.title ? main.title : 'Untitled'}</div>
-        <div class="art-price ${main.sold ? 'sold-price' : ''}"><small>${main.sold ? 'Sold' : 'Reserve Price'}</small>${main.price}</div>
+        <div class="art-price ${mainPriceClass}"><small>${mainPriceLabel}</small>${main.price}</div>
         <a href="meet-the-artists.html#artist-${main.artistSlug}" class="art-artist-link open-artist-modal" data-slug="${main.artistSlug}">by ${main.artist} <span class="arrow">&rarr;</span></a>
         <div class="art-meta">${main.meta}</div>
         <p class="art-desc ${artistBio(main.artistSlug).length > 150 ? 'clamped' : ''}">${artistBio(main.artistSlug)}</p>
         ${artistBio(main.artistSlug).length > 150 ? `<span class="read-more bio-toggle">Read more &rarr;</span>` : ''}
         <div class="art-foot">
-          <a class="bid-link open-modal" data-row="${main.row}">${main.sold ? 'View' : 'Inquire'}</a>
+          <a class="bid-link open-modal" data-row="${main.row}">${(main.sold || mainReserved) ? 'View' : 'Inquire'}</a>
         </div>
       </div>
   `;
@@ -2066,9 +2123,10 @@ function renderNeuroArtists(){
     const photoHtml = ar.photo ? `<img src="${ar.photo}" alt="${ar.name}">` : `<span class="mono">${artistInitials(ar.name)}</span>`;
     const worksHtml = works.map((w) => {
       const sold = !!w.sold;
-      const priceClass = sold ? 'neuro-strip-price sold-price' : 'neuro-strip-price';
+      const reserved = !!w.reserved && !sold;
+      const priceClass = sold ? 'neuro-strip-price sold-price' : (reserved ? 'neuro-strip-price reserved-price' : 'neuro-strip-price');
       const title = w.title ? w.title : 'Untitled';
-      const ribbon = sold ? '<div class="sold-ribbon-sm">Sold</div>' : '';
+      const ribbon = sold ? '<div class="sold-ribbon-sm">Sold</div>' : (reserved ? '<div class="reserved-ribbon-sm">Reserved</div>' : '');
       return `<div class="neuro-strip-item open-modal" data-row="${w.row}">
         <div class="neuro-strip-figure"><img src="${w.img}" alt="${title}">${ribbon}</div>
         <div class="neuro-strip-title">${title}</div>
@@ -2099,8 +2157,12 @@ function openModal(row){
   const a = artworks.find(x => x.row === row);
   if(!a) return;
   currentModalRow = row;
+  const isReserved = !!a.reserved && !a.sold;
   document.getElementById('modalImg').src = a.img;
-  document.getElementById('modalSold').style.display = a.sold ? 'block' : 'none';
+  const modalSoldEl = document.getElementById('modalSold');
+  modalSoldEl.style.display = (a.sold || isReserved) ? 'block' : 'none';
+  modalSoldEl.textContent = a.sold ? 'Sold' : (isReserved ? 'Reserved' : '');
+  modalSoldEl.classList.toggle('reserved', isReserved);
   document.getElementById('modalMeta').textContent = a.meta;
   document.getElementById('modalTitle').textContent = a.title ? a.title : 'Untitled';
   const artistLink = document.getElementById('modalArtist');
@@ -2110,7 +2172,7 @@ function openModal(row){
   const bioText = artistBio(a.artistSlug);
   document.getElementById('modalArtistBio').textContent = bioText;
   document.getElementById('modalArtistBioWrap').style.display = bioText ? 'block' : 'none';
-  document.getElementById('modalPriceLabel').textContent = a.sold ? 'Sold' : 'Reserve Price';
+  document.getElementById('modalPriceLabel').textContent = a.sold ? 'Sold' : (isReserved ? 'Reserved' : 'Reserve Price');
   document.getElementById('modalPrice').textContent = a.price;
   const inSet = a.collectionId && artworks.filter(x => x.collectionId === a.collectionId).length > 1;
   modalPrevBtn.style.display = inSet ? 'flex' : 'none';
